@@ -1,3 +1,4 @@
+import java.util.HashMap;
 public class Daily_1 {
     public static void main(String[] args) {
         int nums[] = {2,7,11,15}, target = 9;
@@ -15,5 +16,23 @@ public class Daily_1 {
         }
 
         throw new RuntimeException();
+    }
+
+    public static int[] twoSum1(int[] nums, int target){
+        int[] res = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(nums[i])){
+                res[0] = i;
+                res[1] = map.get(nums[i]);
+
+                return res;
+            } else{
+                map.put(target - nums[i], i);
+            }
+        }
+
+        return res;
     }
 }
